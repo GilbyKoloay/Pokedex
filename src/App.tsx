@@ -1,6 +1,10 @@
+import { Router } from "./router";
+
+
+
 const App = () => {
   return (
-    <div>Pokedex</div>
+    <Router />
   );
 };
 

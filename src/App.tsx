@@ -1,4 +1,4 @@
-import { Router } from "./router";
+import { Router } from './router';
 
 
 
@@ -11,3 +11,4 @@ const App = () => {
 
 
 export { App };
+

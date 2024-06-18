@@ -15,7 +15,7 @@ To run the app locally, do the following steps:
   - `install.sh` for mac/linux machine (untested).
 - Run `npm start` command to start the app.
 
-Note that the `.env` file is generated automatically. This is to provide convenience for user that want to run this app locally. If `.env` did not generate successfully, please manually create `.env` file and fill it using the value below:
+Note that the `.env` file is generated automatically. This was made on purpose to provide convenience for user that want to run this app locally. If `.env` did not generate successfully, please manually create `.env` file and fill it using the value below:
 ```
 REACT_APP_API_URL=https://pokeapi.co/api/v2/ 
 ```

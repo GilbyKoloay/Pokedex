@@ -12,7 +12,7 @@ const typeAndWeaknessStyleList: Record<string, TypeAndWeaknessStyle> = {
     background: 'linear-gradient(to bottom, #729F3F 50%, #729F3F 50%)',
     color: 'white'
   },
-  black: {
+  dark: {
     background: 'linear-gradient(to bottom, #707070 50%, #707070 50%)',
     color: 'white'
   },

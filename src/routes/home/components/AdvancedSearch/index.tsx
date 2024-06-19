@@ -1,3 +1,5 @@
+import type { PokemonHeight } from '../../../../types/pokemonHeight';
+import type { PokemonWeight } from '../../../../types/pokemonWeight';
 import type { TypeAndWeakness as TypeAndWeaknessT } from './types/typeAndWeakness';
 
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
@@ -24,8 +26,8 @@ const AdvancedSearch = () => {
   const [selectedNumRangeMin, setSelectedNumRangeMin] = useState<number>(0);
   const [selectedNumRangeMax, setSelectedNumRangeMax] = useState<number>(0);
   const [selectedAbility, setSelectedAbility] = useState<string>('All');
-  const [height, setHeight] = useState<string | null>(null);
-  const [weight, setWeight] = useState<string | null>(null);
+  const [selectedHeights, setSelectedHeights] = useState<PokemonHeight[]>([]);
+  const [selectedWeights, setSelectedWeights] = useState<PokemonWeight[]>([]);
 
 
 
@@ -54,7 +56,7 @@ const AdvancedSearch = () => {
     <form className='bg-neutral-600 -mx-4 text-white pt-2'>
       {/* advanced search filters */}
       <div className={isAdvancedSearchShown ? 'h-auto' : 'h-4'}>
-        <div className={`${isAdvancedSearchShown ? 'block' : 'hidden'} p-4 md:p-8 flex flex-col lg:flex-row gap-8 lg:gap-16`}>
+        <div className={`${isAdvancedSearchShown ? 'block' : 'hidden'} py-4 px-8 md:py-8 md:px-16 flex flex-col lg:flex-row gap-8 lg:gap-16`}>
           <div className='flex-1 flex flex-col gap-8'>
             <TypeAndWeakness typeAndWeaknessList={typeAndWeakness} setTypeAndWeakness={setTypeAndWeakness} />
             <NumberRange
@@ -64,8 +66,8 @@ const AdvancedSearch = () => {
           </div>
           <div className='flex-1 flex flex-col gap-8'>
             <Ability selectedAbility={selectedAbility} setSelectedAbility={setSelectedAbility} />
-            <Height />
-            <Weight />
+            <Height selectedOptions={selectedHeights} setSelectedOptions={setSelectedHeights} />
+            <Weight selectedOptions={selectedWeights} setSelectedOptions={setSelectedWeights} />
           </div>
         </div>
         <FormAction />

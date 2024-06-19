@@ -1,7 +1,7 @@
-import { Search } from './components/Search';
 import { AdvancedSearch } from './components/AdvancedSearch';
 import { Filter } from './components/Filter';
 import { List } from './components/List';
+import { Search } from './components/Search';
 
 
 

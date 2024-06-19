@@ -1,10 +1,13 @@
+import { AppContextProvider } from './contexts/AppContext';
 import { Router } from './router';
 
 
 
 const App = () => {
   return (
-    <Router />
+    <AppContextProvider>
+      <Router />
+    </AppContextProvider>
   );
 };
 

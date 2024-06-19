@@ -5,7 +5,7 @@
  */
 const Filter = () => {
   return (
-    <div>
+    <div className='mt-6'>
       Filter
     </div>
   );

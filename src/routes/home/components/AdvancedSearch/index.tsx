@@ -19,9 +19,9 @@ import { Weight } from './components/Weight';
  * Component that provides advanced search and show the filtered pokemons in the list.
  */
 const AdvancedSearch = () => {
-  const { pokemonTypeNameList } = useAppContext();
+  const { pokemonTypeNameList, pokemonCount } = useAppContext();
 
-  const [isAdvancedSearchShown, setIsAdvancedSearchShown] = useState<boolean>(true);
+  const [isAdvancedSearchShown, setIsAdvancedSearchShown] = useState<boolean>(false);
   const [typeAndWeakness, setTypeAndWeakness] = useState<TypeAndWeaknessT[]>([]);
   const [selectedNumRangeMin, setSelectedNumRangeMin] = useState<number>(0);
   const [selectedNumRangeMax, setSelectedNumRangeMax] = useState<number>(0);
@@ -32,7 +32,7 @@ const AdvancedSearch = () => {
 
 
   useEffect(() => {
-    setTypeDefaultValue();
+    setTypeAndWeaknessDefaultValue();
   }, [pokemonTypeNameList]);
 
 
@@ -40,7 +40,7 @@ const AdvancedSearch = () => {
   /**
    * Will set the 'type and weakness' filter default state if pokemon type name list is fetched from API.
    */
-  async function setTypeDefaultValue() {
+  function setTypeAndWeaknessDefaultValue() {
     if (!pokemonTypeNameList) return;
 
     setTypeAndWeakness(pokemonTypeNameList.map((name: string) => ({
@@ -50,13 +50,47 @@ const AdvancedSearch = () => {
     })));
   }
 
+  /**
+   * Handle the form when it's submitted.
+   * 
+   * Will fetch the pokemon list based on filter states.
+   */
+  async function handleFormOnSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
+  /**
+   * Handle the form when it's submitted.
+   * 
+   * Will reset the filter states to their default value.
+   */
+  async function handleFormOnReset(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setTypeAndWeaknessDefaultValue();
+    if (pokemonCount) {
+      setSelectedNumRangeMin(1);
+      setSelectedNumRangeMax(pokemonCount);
+    } else {
+      setSelectedNumRangeMin(0);
+      setSelectedNumRangeMax(0);
+    }
+    setSelectedAbility('All');
+    setSelectedHeights([]);
+    setSelectedWeights([]);
+  }
+
 
 
   return (
-    <form className='bg-neutral-600 -mx-4 text-white pt-2'>
+    <form 
+      className='bg-neutral-600 -mx-4 text-white pt-2'
+      onSubmit={handleFormOnSubmit}
+      onReset={handleFormOnReset}
+    >
       {/* advanced search filters */}
       <div className={isAdvancedSearchShown ? 'h-auto' : 'h-4'}>
-        <div className={`${isAdvancedSearchShown ? 'block' : 'hidden'} py-4 px-8 md:py-8 md:px-16 flex flex-col lg:flex-row gap-8 lg:gap-16`}>
+        <div className={`${isAdvancedSearchShown ? 'block' : 'hidden'} mb-4 py-4 px-8 md:py-8 md:px-16 flex flex-col lg:flex-row gap-8 lg:gap-16`}>
           <div className='flex-1 flex flex-col gap-8'>
             <TypeAndWeakness typeAndWeaknessList={typeAndWeakness} setTypeAndWeakness={setTypeAndWeakness} />
             <NumberRange
@@ -64,13 +98,15 @@ const AdvancedSearch = () => {
               selectedNumRangeMax={selectedNumRangeMax} setSelectedNumRangeMax={setSelectedNumRangeMax}
             />
           </div>
-          <div className='flex-1 flex flex-col gap-8'>
-            <Ability selectedAbility={selectedAbility} setSelectedAbility={setSelectedAbility} />
-            <Height selectedOptions={selectedHeights} setSelectedOptions={setSelectedHeights} />
-            <Weight selectedOptions={selectedWeights} setSelectedOptions={setSelectedWeights} />
+          <div className='flex-1 flex flex-col justify-between gap-8'>
+            <div className='flex flex-col gap-8'>
+              <Ability selectedAbility={selectedAbility} setSelectedAbility={setSelectedAbility} />
+              <Height selectedOptions={selectedHeights} setSelectedOptions={setSelectedHeights} />
+              <Weight selectedOptions={selectedWeights} setSelectedOptions={setSelectedWeights} />
+            </div>
+            <FormAction />
           </div>
         </div>
-        <FormAction />
       </div>
 
       {/* visibility toggle button */}

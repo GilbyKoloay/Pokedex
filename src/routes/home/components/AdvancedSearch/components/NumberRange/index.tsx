@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useAppContext } from '../../../../../../contexts/AppContext';
 
 
@@ -19,6 +20,15 @@ const NumberRange: React.FC<NumberRangeT> = ({ selectedNumRangeMin, setSelectedN
 
 
 
+  useEffect(() => {
+    if (pokemonCount > 0) {
+      setSelectedNumRangeMin(1);
+      setSelectedNumRangeMax(pokemonCount);
+    }
+  }, [pokemonCount]);
+
+
+
   return (
     <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-2'>
       <h1>Number Range</h1>
@@ -31,7 +41,7 @@ const NumberRange: React.FC<NumberRangeT> = ({ selectedNumRangeMin, setSelectedN
             value={selectedNumRangeMin}
             onChange={e => setSelectedNumRangeMin(isNaN(parseInt(e.target.value)) ? selectedNumRangeMin : parseInt(e.target.value))}
             type='number'
-            min={1}
+            min={0}
             max={selectedNumRangeMax}
           />
           <div>-</div>

@@ -1,4 +1,5 @@
 import { useAppContext } from '../../../../../../contexts/AppContext';
+import { Select } from '../../../../../../components/select';
 
 
 
@@ -23,16 +24,17 @@ const Ability: React.FC<AbilityT> = ({ selectedAbility, setSelectedAbility }) =>
       {!pokemonAbilityNameList ? (
         <div>Loading ...</div>
       ) : (
-        <select
-          className='bg-neutral-800 py-1 md:py-2 px-2 md:px-4 rounded-md hover:cursor-pointer'
+        <Select
           value={selectedAbility}
-          onChange={e => setSelectedAbility(e.target.value)}
-        >
-          <option value='All'>All</option>
-          {pokemonAbilityNameList.map((abilityName, index) => (
-            <option key={index} value={abilityName}>{abilityName}</option>
-          ))}
-        </select>
+          onChange={value => setSelectedAbility(value as string)}
+          options={[
+            { value: 'All', label: 'All' },
+            ...pokemonAbilityNameList.map(abilityName => ({
+              value: abilityName,
+              label: abilityName
+            }))
+          ]}
+        />
       )}
     </div>
   );

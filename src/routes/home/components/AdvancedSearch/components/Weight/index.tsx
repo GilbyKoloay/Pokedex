@@ -56,7 +56,7 @@ const Weight: React.FC<WeightT> = ({ selectedOptions, setSelectedOptions }) => {
   return (
     <div className='flex flex-col gap-2 md:gap-4'>
       <h1>Weight</h1>
-      <div className='flex justify-between'>
+      <div className='flex gap-4 justify-between sm:justify-start lg:justify-between'>
         {options.map((option, index) => (
           <button
             key={index}

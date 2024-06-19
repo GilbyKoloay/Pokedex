@@ -17,7 +17,7 @@ import { Weight } from './components/Weight';
  * Component that provides advanced search and show the filtered pokemons in the list.
  */
 const AdvancedSearch = () => {
-  const { pokemonTypeList } = useAppContext();
+  const { pokemonTypeNameList } = useAppContext();
 
   const [isAdvancedSearchShown, setIsAdvancedSearchShown] = useState<boolean>(true);
   const [typeAndWeakness, setTypeAndWeakness] = useState<TypeAndWeaknessT[]>([]);
@@ -31,7 +31,7 @@ const AdvancedSearch = () => {
 
   useEffect(() => {
     setTypeDefaultValue();
-  }, [pokemonTypeList]);
+  }, [pokemonTypeNameList]);
 
 
 
@@ -39,10 +39,10 @@ const AdvancedSearch = () => {
    * Will set the 'type and weakness' filter state if pokemon type list is fetched from API.
    */
   async function setTypeDefaultValue() {
-    if (!pokemonTypeList) return;
+    if (!pokemonTypeNameList) return;
 
-    setTypeAndWeakness(pokemonTypeList.map(type => ({
-      name: type,
+    setTypeAndWeakness(pokemonTypeNameList.map(name => ({
+      name,
       typeToggle: false,
       weaknessToggle: false
     })));
@@ -51,13 +51,16 @@ const AdvancedSearch = () => {
 
 
   return (
-    <div className='bg-neutral-600 -mx-4 text-white pt-2'>
+    <form className='bg-neutral-600 -mx-4 text-white pt-2'>
       {/* advanced search filters */}
       <div className={isAdvancedSearchShown ? 'h-auto' : 'h-4'}>
         <div className={`${isAdvancedSearchShown ? 'block' : 'hidden'} p-4 md:p-8`}>
-          <div>
+          <div className='flex flex-col gap-8'>
             <TypeAndWeakness typeAndWeaknessList={typeAndWeakness} setTypeAndWeakness={setTypeAndWeakness} />
-            <NumberRange />
+            <NumberRange
+              minRange={numberRangeMin} setMinRange={setNumberRangeMin}
+              maxRange={numberRangeMax} setMaxRange={setNumberRangeMax}
+            />
           </div>
           <div>
             <Ability />
@@ -77,7 +80,7 @@ const AdvancedSearch = () => {
           </div>
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

@@ -12,6 +12,9 @@ type TypeAndWeaknessT = {
 
 
 
+/**
+ * Component that shows the filter of type and weakness of pokemon inside 'AdvancedSearch' component.
+ */
 const TypeAndWeakness: React.FC<TypeAndWeaknessT> = ({ typeAndWeaknessList, setTypeAndWeakness }) => {
   /**
    * Will change the state of 'type and weakness' item inside 'type and weakness list'.
@@ -44,12 +47,24 @@ const TypeAndWeakness: React.FC<TypeAndWeaknessT> = ({ typeAndWeaknessList, setT
         {!typeAndWeaknessList ? (
           <div>Loading ...</div>
         ) : (
-          <div className='grid grid-cols-2 gap-y-2 gap-x-8'>
+          <div className='grid grid-cols-2 gap-y-2 gap-x-8 border border-red-500'>
             {typeAndWeaknessList.map((typeAndWeakness, index) => (
-              <div key={index} className='flex items-center gap-2 md:gap-4'>
+              <div key={index} className='border border-yellow-500 flex justify-center items-center gap-2 md:gap-4'>
                 <div className='flex-1 text-center rounded-md border-2 border-neutral-400 min-w-16 max-w-32' style={getTypeAndWeaknessStyle(typeAndWeakness.name)}>{toProperCase(typeAndWeakness.name)}</div>
-                <button className={`${typeAndWeakness.typeToggle ? 'bg-blue-400' : 'bg-neutral-100'} rounded-full size-8 text-black font-bold`} onClick={() => handleTypeOrWeaknessOnPress('t', typeAndWeakness.name)}>T</button>
-                <button className={`${typeAndWeakness.weaknessToggle ? 'bg-blue-400' : 'bg-neutral-100'} rounded-full size-8 text-black font-bold`} onClick={() => handleTypeOrWeaknessOnPress('w', typeAndWeakness.name)}>W</button>
+                <button
+                  className={`${typeAndWeakness.typeToggle ? 'bg-blue-400' : 'bg-neutral-100'} rounded-full size-8 text-black font-bold`}
+                  onClick={() => handleTypeOrWeaknessOnPress('t', typeAndWeakness.name)}
+                  type='button'
+                >
+                  T
+                </button>
+                <button
+                  className={`${typeAndWeakness.weaknessToggle ? 'bg-blue-400' : 'bg-neutral-100'} rounded-full size-8 text-black font-bold`}
+                  onClick={() => handleTypeOrWeaknessOnPress('w', typeAndWeakness.name)}
+                  type='button'
+                >
+                  W
+                </button>
               </div>
             ))}
           </div>

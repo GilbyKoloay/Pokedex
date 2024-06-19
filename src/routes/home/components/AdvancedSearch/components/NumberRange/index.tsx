@@ -1,6 +1,6 @@
 const NumberRange = () => {
   return (
-    <div>NumberRange</div>
+    <h1>NumberRange</h1>
   );
 };
 

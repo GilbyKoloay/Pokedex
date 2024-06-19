@@ -11,7 +11,7 @@ import { List } from './components/List';
 const Home = () => {
   return (
     <main id='home'>
-      <h1 className='text-xl md:text-2xl lg:text-3xl xl:text-4xl'>Pokédex</h1>
+      <h1>Pokédex</h1>
       <Search />
       <AdvancedSearch />
       <Filter />

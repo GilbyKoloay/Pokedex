@@ -29,21 +29,48 @@
 
 
 
-/* set default value */
+/* set texts default value */
 * {
   font-family: 'Comic Neue';
-  font-size: 1.125;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 400;
 }
-
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
   font-family: 'Gloria Hallelujah';
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-weight: 700;
+  font-weight: 400;
+}
+h1 {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+h2 {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+h3 {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
+@media (min-width: 768px) {
+  *, h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+
+
+/* set default value */
 body, #root {
   height: 100vh;
   overflow: auto;

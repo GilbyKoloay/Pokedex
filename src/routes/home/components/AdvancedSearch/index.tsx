@@ -54,7 +54,7 @@ const AdvancedSearch = () => {
     <div className='bg-neutral-600 -mx-4 text-white pt-2'>
       {/* advanced search filters */}
       <div className={isAdvancedSearchShown ? 'h-auto' : 'h-4'}>
-        <div className={`${isAdvancedSearchShown ? 'block' : 'hidden'} p-4 md:p-6 lg:p-8 xl:p-10`}>
+        <div className={`${isAdvancedSearchShown ? 'block' : 'hidden'} p-4 md:p-8`}>
           <div>
             <TypeAndWeakness typeAndWeaknessList={typeAndWeakness} setTypeAndWeakness={setTypeAndWeakness} />
             <NumberRange />

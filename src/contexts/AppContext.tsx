@@ -88,7 +88,7 @@ const AppContextProvider: React.FC<AppContextProviderT> = ({ children }) => {
   const [pokemonTypeNameList, setPokemonTypeNameList] = useState<PokemonTypeNameList>(null);
   const [pokemonCount, setPokemonCount] = useState<number>(0);
   const [pokemonAbilityNameList, setPokemonAbilityNameList] = useState<PokemonAbilityNameList>(null);
-  const [pokemonList, setPokemonList] = useState<Pokemon[] | null>([]);
+  const [pokemonList, setPokemonList] = useState<Pokemon[] | null>(null);
   const [pokemonListNextFetchURL, setPokemonListNextFetchURL] = useState<string>(`${process.env.REACT_APP_API_URL}/pokemon?offset=0&limit=${pokemonListNextFetchURLCount}`);
   const [pokemonListSortOption, setPokemonListSortOption] = useState<PokemonListSortOption>('Lowest Number (First)');
   const [isPokemonListAdditionHalted, setIsPokemonListAdditionHalted] = useState<boolean>(false);

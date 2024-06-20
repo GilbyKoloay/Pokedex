@@ -7,6 +7,7 @@ import { useAppContext } from '../../../../contexts/AppContext';
 import { getTypeAndWeaknessStyle } from '../../../../utils/getTypeAndWeaknessStyle';
 import { toProperCase } from '../../../../utils/toProperCase';
 import { convertNationalNumberToHashTagString } from './utils/convertNationalNumberToHashTagString';
+import { sortPokemonList } from './sortPokemonList';
 
 
 
@@ -33,7 +34,8 @@ const List = () => {
   }, []);
 
   useEffect(() => {
-    sortPokemonList(pokemonList);
+    const sortedPokemonList = sortPokemonList(pokemonList, pokemonListSortOption);
+    setPokemonList(sortedPokemonList);
   }, [pokemonListSortOption]);
 
   /**
@@ -66,7 +68,9 @@ const List = () => {
 
       const newPokemonNameList: Pokemon['name'][] = await getPokemonNameList();
       const newPokemonList: Pokemon[] = await getPokemonListOverviewData(newPokemonNameList);
-      sortPokemonList([...pokemonList, ...newPokemonList]);
+      const sortedPokemonList = sortPokemonList([...pokemonList, ...newPokemonList], pokemonListSortOption);
+
+      setPokemonList(sortedPokemonList);
     } catch (err) {
       console.error('Unable to add new pokemon in list: ', err);
     } finally {
@@ -131,25 +135,6 @@ const List = () => {
       console.error('Unable to get pokemon list overview data: ', err);
       return [];
     }
-  }
-
-  /**
-   * Sort the pokemon list according to the selected filter in 'Filter' component.
-   */
-  function sortPokemonList(list: Pokemon[]) {
-    const sortedList = [...list];
-    
-    if (pokemonListSortOption === 'Lowest Number (First)') {
-      sortedList.sort((a, b) => a.nationalNumber - b.nationalNumber);
-    } else if (pokemonListSortOption === 'Highest Number (First)') {
-      sortedList.sort((a, b) => b.nationalNumber - a.nationalNumber);
-    } else if (pokemonListSortOption === 'A-Z') {
-      sortedList.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (pokemonListSortOption === 'Z-A') {
-      sortedList.sort((a, b) => b.name.localeCompare(a.name));
-    }
-    
-    setPokemonList(sortedList);
   }
 
 

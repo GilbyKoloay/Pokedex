@@ -1,5 +1,5 @@
-import type { Pokemon } from '../../../../types/pokemon';
-import type { PokemonListSortOption } from '../../../../types/pokemonListSortOption';
+import type { Pokemon } from '../../../../../types/pokemon';
+import type { PokemonListSortOption } from '../../../../../types/pokemonListSortOption';
 
 
 

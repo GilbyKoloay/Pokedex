@@ -1,4 +1,4 @@
-type Filter =
+type PokemonListSortOption =
   'Lowest Number (First)' |
   'Highest Number (First)' |
   'A-Z' |
@@ -7,5 +7,5 @@ type Filter =
 
 
 
-export type { Filter };
+export { PokemonListSortOption };
 

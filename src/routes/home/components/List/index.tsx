@@ -16,7 +16,13 @@ import { convertNationalNumberToHashTagString } from './utils/convertNationalNum
 const List = () => {
   const loader = useRef<HTMLDivElement>(null);
 
-  const { pokemonList, setPokemonList, pokemonListFetchURL, setPokemonListFetchURL } = useAppContext();
+  const {
+    pokemonList,
+    setPokemonList,
+    pokemonListFetchURL,
+    setPokemonListFetchURL,
+    pokemonListSortOption
+  } = useAppContext();
 
   const [isAddingPokemonList, setIsAddingPokemonList] = useState<boolean>(false);
 
@@ -25,6 +31,10 @@ const List = () => {
   useEffect(() => {
     addPokemonList();
   }, []);
+
+  useEffect(() => {
+    sortPokemonList(pokemonList);
+  }, [pokemonListSortOption]);
 
   /**
    * This useEffect will add more pokemon to the pokemon list if the user has scrolled to the bottom of the page.
@@ -56,8 +66,7 @@ const List = () => {
 
       const newPokemonNameList: Pokemon['name'][] = await getPokemonNameList();
       const newPokemonList: Pokemon[] = await getPokemonListOverviewData(newPokemonNameList);
-
-      setPokemonList([...pokemonList, ...newPokemonList]);
+      sortPokemonList([...pokemonList, ...newPokemonList]);
     } catch (err) {
       console.error('Unable to add new pokemon in list: ', err);
     } finally {
@@ -122,6 +131,25 @@ const List = () => {
       console.error('Unable to get pokemon list overview data: ', err);
       return [];
     }
+  }
+
+  /**
+   * Sort the pokemon list according to the selected filter in 'Filter' component.
+   */
+  function sortPokemonList(list: Pokemon[]) {
+    const sortedList = [...list];
+    
+    if (pokemonListSortOption === 'Lowest Number (First)') {
+      sortedList.sort((a, b) => a.nationalNumber - b.nationalNumber);
+    } else if (pokemonListSortOption === 'Highest Number (First)') {
+      sortedList.sort((a, b) => b.nationalNumber - a.nationalNumber);
+    } else if (pokemonListSortOption === 'A-Z') {
+      sortedList.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (pokemonListSortOption === 'Z-A') {
+      sortedList.sort((a, b) => b.name.localeCompare(a.name));
+    }
+    
+    setPokemonList(sortedList);
   }
 
 

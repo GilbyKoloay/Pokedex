@@ -1,6 +1,7 @@
 import type { Pokemon } from '../types/pokemon';
 import type { PokemonAbilityNameList } from '../types/pokemonAbilityNameList';
 import type { PokemonTypeNameList } from '../types/pokemonTypeNameList';
+import type { PokemonListSortOption } from '../types/pokemonListSortOption';
 
 import axios from 'axios';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -24,6 +25,8 @@ type AppContextT = {
   setPokemonList: (pokemonList: Pokemon[]) => void;
   pokemonListFetchURL: PokemonListFetchURL;
   setPokemonListFetchURL: (pokemonListFetchURL: PokemonListFetchURL) => void;
+  pokemonListSortOption: PokemonListSortOption;
+  setPokemonListSortOption: (pokemonListFetchURL: PokemonListSortOption) => void;
 };
 
 type AppContextProviderT = {
@@ -56,6 +59,7 @@ const AppContextProvider: React.FC<AppContextProviderT> = ({ children }) => {
     next: `${process.env.REACT_APP_API_URL}/pokemon?offset=0&limit=${pokemonListFetchURLCount}`,
     previous: ''
   });
+  const [pokemonListSortOption, setPokemonListSortOption] = useState<PokemonListSortOption>('Lowest Number (First)');
 
 
 
@@ -133,7 +137,8 @@ const AppContextProvider: React.FC<AppContextProviderT> = ({ children }) => {
       pokemonCount, setPokemonCount,
       pokemonAbilityNameList, setPokemonAbilityNameList,
       pokemonList, setPokemonList,
-      pokemonListFetchURL, setPokemonListFetchURL
+      pokemonListFetchURL, setPokemonListFetchURL,
+      pokemonListSortOption, setPokemonListSortOption
     }}>
       {children}
     </AppContext.Provider>

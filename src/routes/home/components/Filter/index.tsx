@@ -1,12 +1,12 @@
-import { Filter as FilterT } from './types/filter';
+import type { PokemonListSortOption } from '../../../../types/pokemonListSortOption';
 
-import { useState } from 'react';
 
 import { Select } from '../../../../components/select';
+import { useAppContext } from '../../../../contexts/AppContext';
 
 
 
-const options: FilterT[] = [
+const options: PokemonListSortOption[] = [
   'Lowest Number (First)',
   'Highest Number (First)',
   'A-Z',
@@ -21,17 +21,17 @@ const options: FilterT[] = [
  * Also provides an option to show random pokemons.
  */
 const Filter = () => {
-  const [selectedFilter, setSelectedFilter] = useState<FilterT>('Lowest Number (First)');
+  const { pokemonListSortOption, setPokemonListSortOption } = useAppContext();
 
 
-
+  
   return (
     <div className='mt-8 flex flex-col md:flex-row gap-2 md:gap-4 md:justify-end'>
       <h2 className='font-bold'>Sort By</h2>
 
       <Select
-        value={selectedFilter}
-        onChange={value => setSelectedFilter(value as FilterT)}
+        value={pokemonListSortOption}
+        onChange={value => setPokemonListSortOption(value as PokemonListSortOption)}
         options={options.map(option => ({ value: option, label: option}))}
       />
     </div>

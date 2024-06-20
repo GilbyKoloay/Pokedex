@@ -19,7 +19,7 @@ async function getPokemonOverviewData(nationalNumberOrId: Pokemon['nationalNumbe
     
     return pokemon;
   } catch (err) {
-    // console.error('Unable to get pokemon data: ', err);
+    console.error('Unable to get pokemon data: ', err);
     return null;
   }
 }
@@ -68,7 +68,7 @@ async function getPokemonData(nationalNumberOrId: Pokemon['nationalNumber'] | Po
 
     return pokemon;
   } catch (err) {
-    // console.error('Unable to get pokemon API data: ', err);
+    console.error('Unable to get pokemon API data: ', err);
     throw err;
   }
 }

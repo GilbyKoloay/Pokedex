@@ -13,10 +13,13 @@ import weightMediumActive from './weight-medium-active.png';
 import weightHeavyInactive from './weight-heavy-inactive.png';
 import weightHeavyActive from './weight-heavy-active.png';
 
+import notFoundDuck from './not-found-duck.png';
+
 
 
 export {
   bg,
+
   heightShortInactive,
   heightShortActive,
   heightMediumInactive,
@@ -28,6 +31,8 @@ export {
   weightMediumInactive,
   weightMediumActive,
   weightHeavyInactive,
-  weightHeavyActive
+  weightHeavyActive,
+  
+  notFoundDuck
 };
 

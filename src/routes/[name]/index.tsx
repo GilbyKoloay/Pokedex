@@ -113,14 +113,14 @@ const Name = () => {
               <Stats />
             </div>
             <div className='flex-1 flex flex-col gap-4 md:gap-8'>
-              <Version />
+              {/* <Version /> */}
               <Description
                 height={pokemon.height}
                 weight={pokemon.weight}
                 abilityList={pokemon.abilityList}
               />
-              <TypeAndWeaknessContainer />
-              <TypeAndWeaknessContainer />
+              <TypeAndWeaknessContainer title='Types' typeList={pokemon.typeList} />
+              {/* <TypeAndWeaknessContainer title='Weaknesses' typeList={} /> */}
             </div>
           </div>
           <Evolution />

@@ -110,7 +110,7 @@ const Name = () => {
           <div className='flex flex-col md:flex-row gap-4 md:gap-8'>
             <div className='flex-1 flex flex-col gap-4 md:gap-8'>
               <Gallery imageList={pokemon.imageList} imageAlt={pokemon.name} />
-              <Stats />
+              <Stats stats={pokemon.stats} />
             </div>
             <div className='flex-1 flex flex-col gap-4 md:gap-8'>
               {/* <Version /> */}
@@ -123,7 +123,7 @@ const Name = () => {
               {/* <TypeAndWeaknessContainer title='Weaknesses' typeList={} /> */}
             </div>
           </div>
-          <Evolution />
+          {/* <Evolution /> */}
         </div>
       )}
     </main>

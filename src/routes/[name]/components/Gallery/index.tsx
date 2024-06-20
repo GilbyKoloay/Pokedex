@@ -22,13 +22,13 @@ const Gallery: React.FC<GalleryT> = ({ imageList, imageAlt }) => {
   return (
     <div className='flex flex-col items-center gap-2'>
       <img
-        className='p-2 md:p-4 bg-neutral-500 bg-opacity-20 rounded-md size-64 md:size-96'
+        className='p-2 md:p-4 bg-neutral-500 bg-opacity-20 rounded-md h-64 md:h-96 w-full'
         src={selectedImage}
         alt={`selected-${imageAlt}`}
       />
 
       <div className='flex gap-2'>
-        {imageList.slice(0, 4).map((image, index) => (
+        {imageList.map((image, index) => (
           <button
             key={index}
             className='bg-neutral-500 hover:bg-neutral-500 rounded-md bg-opacity-20 hover:bg-opacity-40'

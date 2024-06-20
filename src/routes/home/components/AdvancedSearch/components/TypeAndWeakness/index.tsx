@@ -1,6 +1,6 @@
 import type { TypeAndWeakness as TypeAndWeaknessPropT } from '../../types/typeAndWeakness';
 
-import { getTypeAndWeaknessStyle } from './utils/getTypeAndWeaknessStyle';
+import { getTypeAndWeaknessStyle } from '../../../../../../utils/getTypeAndWeaknessStyle';
 
 
 

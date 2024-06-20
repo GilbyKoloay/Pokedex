@@ -71,6 +71,10 @@ h3 {
 
 
 /* set default value */
+html {
+  scroll-behavior: smooth;
+}
+
 body, #root {
   height: 100vh;
   overflow: auto;
@@ -86,5 +90,10 @@ main {
   flex: 1;
   overflow: auto;
   padding: 1rem;
+}
+
+img {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 

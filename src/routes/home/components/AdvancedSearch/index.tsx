@@ -57,6 +57,8 @@ const AdvancedSearch = () => {
    */
   async function handleFormOnSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    window.location.hash = '#home-list';
   }
 
   /**

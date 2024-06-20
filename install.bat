@@ -2,7 +2,7 @@
 cls
 
 echo generating .env file ...
-echo REACT_APP_API_URL=https://pokeapi.co/api/v2/ > .env
+echo REACT_APP_API_URL=https://pokeapi.co/api/v2 > .env
 echo .env file generated successfully.
 
 echo.

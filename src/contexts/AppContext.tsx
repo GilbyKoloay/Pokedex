@@ -1,3 +1,4 @@
+import type { Pokemon } from '../types/pokemon';
 import type { PokemonAbilityNameList } from '../types/pokemonAbilityNameList';
 import type { PokemonTypeNameList } from '../types/pokemonTypeNameList';
 
@@ -7,6 +8,11 @@ import { toProperCase } from '../utils/toProperCase';
 
 
 
+type PokemonListFetchURL = {
+  next: string;
+  previous: string;
+};
+
 type AppContextT = {
   pokemonTypeNameList: PokemonTypeNameList,
   setPokemonTypeNameList: (pokemonTypeNameList: PokemonTypeNameList) => void;
@@ -14,6 +20,10 @@ type AppContextT = {
   setPokemonCount: (pokemonCount: number) => void;
   pokemonAbilityNameList: PokemonAbilityNameList,
   setPokemonAbilityNameList: (pokemonAbilityNameList: PokemonAbilityNameList) => void;
+  pokemonList: Pokemon[];
+  setPokemonList: (pokemonList: Pokemon[]) => void;
+  pokemonListFetchURL: PokemonListFetchURL;
+  setPokemonListFetchURL: (pokemonListFetchURL: PokemonListFetchURL) => void;
 };
 
 type AppContextProviderT = {
@@ -21,6 +31,11 @@ type AppContextProviderT = {
 };
 
 
+
+/**
+ * The total number of pokemon that will be added to pokemon list each time the user scroll to the end of the page in home route.
+ */
+const pokemonListFetchURLCount = 16;
 
 const AppContext = createContext<AppContextT | undefined>(undefined);
 
@@ -36,6 +51,11 @@ const AppContextProvider: React.FC<AppContextProviderT> = ({ children }) => {
   const [pokemonTypeNameList, setPokemonTypeNameList] = useState<PokemonTypeNameList>(null);
   const [pokemonCount, setPokemonCount] = useState<number>(0);
   const [pokemonAbilityNameList, setPokemonAbilityNameList] = useState<PokemonAbilityNameList>(null);
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [pokemonListFetchURL, setPokemonListFetchURL] = useState<PokemonListFetchURL>({
+    next: `${process.env.REACT_APP_API_URL}/pokemon?offset=0&limit=${pokemonListFetchURLCount}`,
+    previous: ''
+  });
 
 
 
@@ -111,7 +131,9 @@ const AppContextProvider: React.FC<AppContextProviderT> = ({ children }) => {
     <AppContext.Provider value={{
       pokemonTypeNameList, setPokemonTypeNameList,
       pokemonCount, setPokemonCount,
-      pokemonAbilityNameList, setPokemonAbilityNameList
+      pokemonAbilityNameList, setPokemonAbilityNameList,
+      pokemonList, setPokemonList,
+      pokemonListFetchURL, setPokemonListFetchURL
     }}>
       {children}
     </AppContext.Provider>

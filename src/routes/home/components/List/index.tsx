@@ -174,7 +174,7 @@ const List = () => {
           
           {/* this element serves as a 'detector'. when the app sees this element, it'll fetch more pokemon data to be added into the list. */}
           {/* if the addition is halted, this element will be hidden so app won't detect this element and auto add pokemon list. */}
-          {isPokemonListAdditionHalted && <div ref={loader} />}
+          {!isPokemonListAdditionHalted && <div ref={loader} />}
         </>
       )}
     </div>

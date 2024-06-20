@@ -8,7 +8,7 @@ import { useAppContext } from '../../../../contexts/AppContext';
 import { getPokemonOverviewData } from '../../../../utils/getPokemonOverviewData';
 import { getTypeAndWeaknessStyle } from '../../../../utils/getTypeAndWeaknessStyle';
 import { toProperCase } from '../../../../utils/toProperCase';
-import { convertNationalNumberToHashTagString } from './utils/convertNationalNumberToHashTagString';
+import { convertNationalNumberToHashTagString } from '../../../../utils/convertNationalNumberToHashTagString';
 import { sortPokemonList } from './utils/sortPokemonList';
 
 
@@ -146,14 +146,14 @@ const List = () => {
                 onClick={() => navigate(`/${pokemon.name}`)}
               >
                 <img
-                  className='flex-1 p-4 md:p-8 bg-neutral-500 bg-opacity-25 w-full rounded-md text-center'
+                  className='flex-1 p-4 md:p-8 bg-neutral-500 bg-opacity-25 w-full rounded-md text'
                   src={pokemon.imageList[0]}
                   alt={pokemon.name}
                 />
                 
                 <div className='px-2 md:px-4'>
-                  <label className='text-neutral-800 text-sm md:text-base'>{convertNationalNumberToHashTagString(pokemon.nationalNumber)}</label>
-                  <p className='font-bold text-xl md:text-2xl'>{toProperCase(pokemon.name)}</p>
+                  <p className='text-left text-neutral-800 text-sm md:text-base'>{convertNationalNumberToHashTagString(pokemon.nationalNumber)}</p>
+                  <p className='text-left font-bold text-xl md:text-2xl'>{toProperCase(pokemon.name)}</p>
                   <div className='grid grid-cols-2 gap-1'>
                     {pokemon.typeList.map((type, index) => (
                       <div

@@ -4,8 +4,16 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useAppContext } from '../../contexts/AppContext';
+import { convertNationalNumberToHashTagString } from '../../utils/convertNationalNumberToHashTagString';
 import { getPokemonOverviewData } from '../../utils/getPokemonOverviewData';
+import { toProperCase } from '../../utils/toProperCase';
+import { Description } from './components/Description';
+import { Evolution } from './components/Evolution';
+import { Gallery } from './components/Gallery';
+import { Header } from './components/Header';
 import { NotFound } from './components/NotFound';
+import { Stats } from './components/Stats';
+import { TypeAndWeaknessContainer } from './components/TypeAndWeaknessContainer';
 
 
 
@@ -95,8 +103,22 @@ const Name = () => {
         <div>Loading ...</div>
       ) : isPokemonDoesNotExist ? (
         <NotFound />
-      ) : (
-        <div>hello world</div>
+      ) : (pokemon) && (
+        <div>
+          <Header name={pokemon.name} nationalNumber={pokemon.nationalNumber} />
+          <div>
+            <div>
+              <Gallery />
+              <Stats />
+            </div>
+            <div>
+              <Description />
+              <TypeAndWeaknessContainer />
+              <TypeAndWeaknessContainer />
+            </div>
+          </div>
+          <Evolution />
+        </div>
       )}
     </main>
   );

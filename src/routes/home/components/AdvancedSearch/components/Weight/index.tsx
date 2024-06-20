@@ -21,6 +21,7 @@ type Option = {
 type WeightT = {
   selectedOptions: PokemonWeight[],
   setSelectedOptions: React.Dispatch<React.SetStateAction<PokemonWeight[]>>;
+  isFormLoading: boolean;
 };
 
 
@@ -36,7 +37,11 @@ const options: Option[] = [
 /**
  * Component that shows the filter of weight of pokemon inside 'AdvancedSearch' component.
  */
-const Weight: React.FC<WeightT> = ({ selectedOptions, setSelectedOptions }) => {
+const Weight: React.FC<WeightT> = ({
+  selectedOptions,
+  setSelectedOptions,
+  isFormLoading
+}) => {
   /**
    * Handles the logic when pressing an option.
    * 
@@ -62,6 +67,7 @@ const Weight: React.FC<WeightT> = ({ selectedOptions, setSelectedOptions }) => {
             key={index}
             type='button'
             onClick={() => handleOptionOnClick(option.name)}
+            disabled={isFormLoading}
           >
             <img
               className='border-2 border-neutral-400 rounded-2xl'

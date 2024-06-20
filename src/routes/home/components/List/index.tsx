@@ -133,9 +133,9 @@ const List = () => {
   return (
     <div id='home-list' className='mt-8 mb-16 px-8 md:px-16'>
       {!pokemonList ? (
-        <div>Empty</div>
-      ) : (pokemonList.length === 0) ? (
         <div>Loading ...</div>
+      ) : (pokemonList.length === 0) ? (
+        <div>Empty</div>
       ) : (
         <>
           <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-8 md:gap-y-16'>

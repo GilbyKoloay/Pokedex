@@ -7,6 +7,7 @@ import { getTypeAndWeaknessStyle } from '../../../../../../utils/getTypeAndWeakn
 type TypeAndWeaknessT = {
   typeAndWeaknessList: TypeAndWeaknessPropT[];
   setTypeAndWeakness: React.Dispatch<React.SetStateAction<TypeAndWeaknessPropT[]>>;
+  isFormLoading: boolean;
 };
 
 
@@ -14,7 +15,11 @@ type TypeAndWeaknessT = {
 /**
  * Component that shows the filter of type and weakness of pokemon inside 'AdvancedSearch' component.
  */
-const TypeAndWeakness: React.FC<TypeAndWeaknessT> = ({ typeAndWeaknessList, setTypeAndWeakness }) => {
+const TypeAndWeakness: React.FC<TypeAndWeaknessT> = ({
+  typeAndWeaknessList,
+  setTypeAndWeakness,
+  isFormLoading
+}) => {
   /**
    * Will change the state of 'type and weakness' item inside 'type and weakness list'.
    * 
@@ -35,10 +40,11 @@ const TypeAndWeakness: React.FC<TypeAndWeaknessT> = ({ typeAndWeaknessList, setT
   return (
     <div>
       <div className='flex flex-col xl:flex-row xl:justify-between xl:items-center gap-2'>
-        <h1>Type & Weakness</h1>
+        {/* <h1>Type & Weakness</h1> */}
+        <h1>Type</h1>
         <div className='flex gap-2 xl:gap-4'>
           <span>T = Type</span>
-          <span>W = Weakness</span>
+          {/* <span>W = Weakness</span> */}
         </div>
       </div>
       
@@ -54,16 +60,18 @@ const TypeAndWeakness: React.FC<TypeAndWeaknessT> = ({ typeAndWeaknessList, setT
                   className={`${typeAndWeakness.typeToggle ? 'bg-blue-400' : 'bg-neutral-100'} rounded-full size-8 text-black font-bold`}
                   onClick={() => handleTypeOrWeaknessOnPress('t', typeAndWeakness.name)}
                   type='button'
+                  disabled={isFormLoading}
                 >
                   T
                 </button>
-                <button
+                {/* <button
                   className={`${typeAndWeakness.weaknessToggle ? 'bg-blue-400' : 'bg-neutral-100'} rounded-full size-8 text-black font-bold`}
                   onClick={() => handleTypeOrWeaknessOnPress('w', typeAndWeakness.name)}
                   type='button'
+                  disabled={isFormLoading}
                 >
                   W
-                </button>
+                </button> */}
               </div>
             ))}
           </div>

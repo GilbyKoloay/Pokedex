@@ -48,11 +48,11 @@ async function getPokemonData(nationalNumberOrId: Pokemon['nationalNumber'] | Po
       imageList: [
         data.sprites.other.dream_world.front_default,
         data.sprites.other.home.front_default,
-        data.sprites.other.home.front_female,
-        data.sprites.other.home.front_shiny,
-        data.sprites.other.home.front_shiny_female,
+        // data.sprites.other.home.front_female,
+        // data.sprites.other.home.front_shiny,
+        // data.sprites.other.home.front_shiny_female,
         data.sprites.other['official-artwork'].front_default,
-        data.sprites.other['official-artwork'].front_shiny
+        // data.sprites.other['official-artwork'].front_shiny
       ].filter(image => image) ?? [],
       stats: {
         hp: data.stats.find((stat: any) => stat.stat.name === 'hp').base_stat,

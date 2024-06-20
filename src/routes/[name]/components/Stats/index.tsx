@@ -15,10 +15,10 @@ type StatsT = {
  */
 const Stats: React.FC<StatsT> = ({ stats }) => {
   return (
-    <div className='bg-neutral-400 py-1 md:py-2 px-2 md:px-4 rounded-md'>
+    <div className='bg-neutral-400 p-4 rounded-md'>
       <h3>Stats</h3>
 
-      <div className='mt-2 md:mt-4 flex justify-between gap-2 md:gap-4'>
+      <div className='mt-2 grid grid-cols-3 lg:grid-cols-6 gap-2'>
         <Item
           value={stats.hp}
           label='HP'

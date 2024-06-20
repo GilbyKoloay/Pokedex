@@ -7,5 +7,5 @@ type PokemonListSortOption =
 
 
 
-export { PokemonListSortOption };
+export type { PokemonListSortOption };
 

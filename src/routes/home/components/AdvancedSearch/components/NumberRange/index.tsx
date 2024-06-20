@@ -8,6 +8,7 @@ type NumberRangeT = {
   setSelectedNumRangeMin: React.Dispatch<React.SetStateAction<number>>;
   selectedNumRangeMax: number;
   setSelectedNumRangeMax: React.Dispatch<React.SetStateAction<number>>;
+  isFormLoading: boolean;
 }
 
 
@@ -15,7 +16,13 @@ type NumberRangeT = {
 /**
  * Component that shows the filter of number range inside 'AdvancedSearch' component.
  */
-const NumberRange: React.FC<NumberRangeT> = ({ selectedNumRangeMin, setSelectedNumRangeMin, selectedNumRangeMax, setSelectedNumRangeMax }) => {
+const NumberRange: React.FC<NumberRangeT> = ({
+  selectedNumRangeMin,
+  setSelectedNumRangeMin,
+  selectedNumRangeMax,
+  setSelectedNumRangeMax,
+  isFormLoading
+}) => {
   const { pokemonCount } = useAppContext();
 
 
@@ -43,6 +50,7 @@ const NumberRange: React.FC<NumberRangeT> = ({ selectedNumRangeMin, setSelectedN
             type='number'
             min={0}
             max={selectedNumRangeMax}
+            disabled={isFormLoading}
           />
           <div>-</div>
           <input className='text-black p-2 min-w-0 max-w-24 rounded-sm focus:-outline-offset-2'
@@ -51,6 +59,7 @@ const NumberRange: React.FC<NumberRangeT> = ({ selectedNumRangeMin, setSelectedN
             type='number'
             min={selectedNumRangeMin}
             max={pokemonCount}
+            disabled={isFormLoading}
           />
         </div>
       )}

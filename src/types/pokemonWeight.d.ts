@@ -2,5 +2,5 @@ type PokemonWeight = 'light' | 'medium' | 'heavy';
 
 
 
-export { PokemonWeight };
+export type { PokemonWeight };
 

@@ -99,7 +99,7 @@ const Name = () => {
 
 
   return (
-    <main id='name'>
+    <main id='name' className='pb-16'>
       {(!isPokemonDoesNotExist && !pokemon) ? (
         <div>Loading ...</div>
       ) : isPokemonDoesNotExist ? (

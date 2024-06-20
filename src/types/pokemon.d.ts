@@ -35,5 +35,5 @@ type Pokemon = {
 
 
 
-export { Pokemon };
+export type { Pokemon };
 

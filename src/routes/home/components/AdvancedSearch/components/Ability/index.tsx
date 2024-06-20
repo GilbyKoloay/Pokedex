@@ -6,6 +6,7 @@ import { Select } from '../../../../../../components/select';
 type AbilityT = {
   selectedAbility: string;
   setSelectedAbility: React.Dispatch<React.SetStateAction<string>>;
+  isFormLoading: boolean;
 };
 
 
@@ -13,7 +14,11 @@ type AbilityT = {
 /**
  * Component that shows the filter of ability inside 'AdvancedSearch' component.
  */
-const Ability: React.FC<AbilityT> = ({ selectedAbility, setSelectedAbility }) => {
+const Ability: React.FC<AbilityT> = ({
+  selectedAbility,
+  setSelectedAbility,
+  isFormLoading
+}) => {
   const { pokemonAbilityNameList } = useAppContext();
 
 
@@ -34,6 +39,7 @@ const Ability: React.FC<AbilityT> = ({ selectedAbility, setSelectedAbility }) =>
               label: abilityName
             }))
           ]}
+          disabled={isFormLoading}
         />
       )}
     </div>

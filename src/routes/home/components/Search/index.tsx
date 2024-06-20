@@ -27,12 +27,13 @@ const Search = () => {
     try {
       e.preventDefault();
       setIsFormLoading(true);
+      setPokemonList(null);
 
       const pokemon = await getPokemonOverviewData(searchQuery);
       
       setIsPokemonListAdditionHalted(true);
 
-      if (!pokemon) setPokemonList(null);
+      if (!pokemon) setPokemonList([]);
       else setPokemonList([pokemon]);
 
       window.location.hash = '#home-list';

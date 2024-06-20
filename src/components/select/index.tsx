@@ -7,6 +7,7 @@ type SelectT = {
     value: Value;
     label: Value | React.ReactNode;
   }[];
+  disabled?: boolean;
 };
 
 
@@ -21,13 +22,15 @@ type SelectT = {
 const Select: React.FC<SelectT> = ({
   value,
   onChange,
-  options
+  options,
+  disabled
 }) => {
   return (
     <select
       className='bg-neutral-800 text-white py-1 md:py-2 px-2 md:px-4 rounded-md hover:cursor-pointer'
       value={value}
       onChange={e => onChange(e.target.value)}
+      disabled={disabled}
     >
       {options.map((option, index) => (
         <option key={index} value={option.value}>{option.label}</option>

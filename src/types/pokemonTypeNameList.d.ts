@@ -2,5 +2,5 @@ type PokemonTypeNameList = string[] | null;
 
 
 
-export { PokemonTypeNameList };
+export type { PokemonTypeNameList };
 

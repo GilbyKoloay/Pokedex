@@ -14,6 +14,7 @@ import { Header } from './components/Header';
 import { NotFound } from './components/NotFound';
 import { Stats } from './components/Stats';
 import { TypeAndWeaknessContainer } from './components/TypeAndWeaknessContainer';
+import { Version } from './components/Version';
 
 
 
@@ -112,7 +113,12 @@ const Name = () => {
               <Stats />
             </div>
             <div className='flex-1 flex flex-col gap-4 md:gap-8'>
-              <Description />
+              <Version />
+              <Description
+                height={pokemon.height}
+                weight={pokemon.weight}
+                abilityList={pokemon.abilityList}
+              />
               <TypeAndWeaknessContainer />
               <TypeAndWeaknessContainer />
             </div>

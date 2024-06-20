@@ -4,17 +4,14 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useAppContext } from '../../contexts/AppContext';
-import { convertNationalNumberToHashTagString } from '../../utils/convertNationalNumberToHashTagString';
 import { getPokemonOverviewData } from '../../utils/getPokemonOverviewData';
 import { toProperCase } from '../../utils/toProperCase';
 import { Description } from './components/Description';
-import { Evolution } from './components/Evolution';
 import { Gallery } from './components/Gallery';
 import { Header } from './components/Header';
 import { NotFound } from './components/NotFound';
 import { Stats } from './components/Stats';
 import { TypeAndWeaknessContainer } from './components/TypeAndWeaknessContainer';
-import { Version } from './components/Version';
 
 
 
@@ -47,11 +44,11 @@ const Name = () => {
    * First retrieves the name or national number from `name` url param.
    * Then search if it already exist in `pokemonList` stored in app context.
    * 
-   * If exist, we will only fetch the detailed data.
+   * If exist, we will only fetch the detailed data and set the document title.
    * 
    * If not exist, we will fetch the data from API.
    * 
-   * If data not exist in API (means the pokemon does not exist), we will route user to home page.
+   * If data not exist in API (means the pokemon does not exist), we will set `isPokemonDoesNotExist` state to false so a `NotFound` component will be displayed.
    */
   async function getPokemon() {
     const pokemonInList = checkPokemonInPokemonList();

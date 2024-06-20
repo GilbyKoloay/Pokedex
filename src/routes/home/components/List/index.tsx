@@ -2,7 +2,7 @@ import type { Pokemon } from '../../../../types/pokemon';
 
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { useAppContext } from '../../../../contexts/AppContext';
 import { getPokemonOverviewData } from '../../../../utils/getPokemonOverviewData';
@@ -140,10 +140,10 @@ const List = () => {
         <>
           <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-8 md:gap-y-16'>
             {pokemonList.map((pokemon) => (
-              <button
+              <Link
                 key={pokemon.nationalNumber}
                 className='flex flex-col duration-100 hover:scale-105 hover:cursor-pointer'
-                onClick={() => navigate(`/${pokemon.name}`)}
+                to={`/${pokemon.name}`}
               >
                 <img
                   className='flex-1 p-4 md:p-8 bg-neutral-500 bg-opacity-25 w-full rounded-md text'
@@ -166,7 +166,7 @@ const List = () => {
                     ))}
                   </div>
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
 

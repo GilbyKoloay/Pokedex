@@ -104,14 +104,14 @@ const Name = () => {
       ) : isPokemonDoesNotExist ? (
         <NotFound />
       ) : (pokemon) && (
-        <div>
+        <div className='flex flex-col gap-4 md:gap-8 p-2 md:p-4'>
           <Header name={pokemon.name} nationalNumber={pokemon.nationalNumber} />
-          <div>
-            <div>
-              <Gallery />
+          <div className='flex flex-col md:flex-row gap-4 md:gap-8'>
+            <div className='flex-1 flex flex-col gap-4 md:gap-8'>
+              <Gallery imageList={pokemon.imageList} imageAlt={pokemon.name} />
               <Stats />
             </div>
-            <div>
+            <div className='flex-1 flex flex-col gap-4 md:gap-8'>
               <Description />
               <TypeAndWeaknessContainer />
               <TypeAndWeaknessContainer />
